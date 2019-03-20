@@ -1,13 +1,13 @@
 provider "google" {
   credentials = "${file("./creds/serviceaccount.json")}"
-  project     = var.gcp_project_id
-  region      = var.gcp_region
+  project     = "${var.gcp_project_id}"
+  region      = "${var.gcp_region}"
 }
 
 resource "google_container_cluster" "gke-cluster" {
   name               = "skillitor"
   network            = "default"
-  zone               = var.gcp_zone
+  zone               = "${var.gcp_zone}"
   initial_node_count = 3
 }
 #
